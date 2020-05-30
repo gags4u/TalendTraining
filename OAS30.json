@@ -1,0 +1,234 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "sale_order",
+    "description" : "Aucune description",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://its2lf9.eu.api-mocks.com",
+    "description" : "Endpoint du mock de votre API. Lorsqu'il est appelé, il simule le comportement de votre API."
+  }, {
+    "url" : "http://myAPI.com"
+  } ],
+  "paths" : {
+    "/sale_orders" : {
+      "get" : {
+        "summary" : "get_sale_order",
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "headers" : {
+              "SaleOrderList" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/sale_order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "update_sale_order",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/sale_order"
+              },
+              "example" : "{\n\t\"row\": [{\n\t\t\t\"orderCreatedTime\": \"2015-06-18T10:30:40Z\",\n\t\t\t\"customerInfo\": {\n\t\t\t\t\"addressee\": \"Daniel Happiness\",\n\t\t\t\t\"address1\": \"964 Rama 4 Road\",\n\t\t\t\t\"province\": \"Bangkok\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"Thailand\",\n\t\t\t\t\"phone\": \"081-000-0000\"\n\n\t\t\t},\n\t\t\t\"orderShipmentInfo\": {\n\t\t\t\t\"addressee\": \"Smith Happiness\",\n\t\t\t\t\"address1\": \"111 Rama 4 rd.\",\n\t\t\t\t\"address2\": \"\",\n\t\t\t\t\"subDistrict\": \"Silom\",\n\t\t\t\t\"district\": \"Bangrak\",\n\t\t\t\t\"city\": \"\",\n\t\t\t\t\"province\": \"Bangkok\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"Thailand\",\n\t\t\t\t\"phone\": \"081-111-2222\",\n\t\t\t\t\"email\": \"floriancelli@gmail.com\"\n\t\t\t},\n\t\t\t\"paymentType\": \"COD\",\n\t\t\t\"shippingType\": \"PREMIUM\",\n\t\t\t\"grossTotal\": 12800,\n\t\t\t\"currUnit\": \"THB\",\n\t\t\t\"orderItems\": [{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"NIK64254110000000M\",\n\t\t\t\t\t\"qty\": 2,\n\t\t\t\t\t\"subTotal\": 6000,\n\t\t\t\t\t\"ItemType\": \"TV\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"ADIM6710300000M\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 3000,\n\t\t\t\t\t\"ItemType\": \"CD\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"BRO120137440000008\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 4000,\n\t\t\t\t\t\"ItemType\": \"TV\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Discount\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": -200,\n\t\t\t\t\t\"ItemType\": \"Blu-Ray\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Shipping Charges\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 20,\n\t\t\t\t\t\"ItemType\": \"DVD\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}"
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sale_orders/{orderCreatedTime}" : {
+      "delete" : {
+        "summary" : "delete_sale_order",
+        "responses" : {
+          "default" : {
+            "description" : "Status default",
+            "headers" : {
+              "Deleted" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/sale_order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "orderCreatedTime",
+        "in" : "path",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      } ]
+    },
+    "/sale_orders/" : { },
+    "/sale_orders/create" : {
+      "post" : {
+        "summary" : "create_sale_order",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/sale_order"
+              },
+              "example" : "{\n\t\"row\": [{\n\t\t\t\"orderCreatedTime\": \"2015-06-18T10:30:40Z\",\n\t\t\t\"customerInfo\": {\n\t\t\t\t\"addressee\": \"Dan Happiness\",\n\t\t\t\t\"address1\": \"964 Rama 4 Road\",\n\t\t\t\t\"province\": \"Bangkok\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"Thailand\",\n\t\t\t\t\"phone\": \"081-000-0000\"\n\n\t\t\t},\n\t\t\t\"orderShipmentInfo\": {\n\t\t\t\t\"addressee\": \"Smith Happiness\",\n\t\t\t\t\"address1\": \"111 Rama 4 rd.\",\n\t\t\t\t\"address2\": \"\",\n\t\t\t\t\"subDistrict\": \"Silom\",\n\t\t\t\t\"district\": \"Bangrak\",\n\t\t\t\t\"city\": \"\",\n\t\t\t\t\"province\": \"Bangkok\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"Thailand\",\n\t\t\t\t\"phone\": \"081-111-2222\",\n\t\t\t\t\"email\": \"floriancelli@gmail.com\"\n\t\t\t},\n\t\t\t\"paymentType\": \"COD\",\n\t\t\t\"shippingType\": \"PREMIUM\",\n\t\t\t\"grossTotal\": 12800,\n\t\t\t\"currUnit\": \"THB\",\n\t\t\t\"orderItems\": [{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"NIK64254110000000M\",\n\t\t\t\t\t\"qty\": 2,\n\t\t\t\t\t\"subTotal\": 6000,\n\t\t\t\t\t\"ItemType\": \"TV\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"ADIM6710300000M\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 3000,\n\t\t\t\t\t\"ItemType\": \"CD\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"BRO120137440000008\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 4000,\n\t\t\t\t\t\"ItemType\": \"TV\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Discount\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": -200,\n\t\t\t\t\t\"ItemType\": \"Blu-Ray\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Shipping Charges\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 20,\n\t\t\t\t\t\"ItemType\": \"DVD\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\n\n\t\t{\n\t\t\t\"orderCreatedTime\": \"2015-07-18T10:10:40Z\",\n\t\t\t\"customerInfo\": {\n\t\t\t\t\"addressee\": \"Bob Dylan\",\n\t\t\t\t\"address1\": \"22 lake str\",\n\t\t\t\t\"province\": \"san francisco\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"USA\",\n\t\t\t\t\"phone\": \"01-010-241\"\n\n\t\t\t},\n\t\t\t\"orderShipmentInfo\": {\n\t\t\t\t\"addressee\": \"Smith Happiness\",\n\t\t\t\t\"address1\": \"111 Rama 4 rd.\",\n\t\t\t\t\"address2\": \"\",\n\t\t\t\t\"subDistrict\": \"Silom\",\n\t\t\t\t\"district\": \"Bangrak\",\n\t\t\t\t\"city\": \"\",\n\t\t\t\t\"province\": \"Bangkok\",\n\t\t\t\t\"postalCode\": \"10500\",\n\t\t\t\t\"country\": \"Thailand\",\n\t\t\t\t\"phone\": \"081-111-2222\",\n\t\t\t\t\"email\": \"fcelli@talend.com\"\n\t\t\t},\n\t\t\t\"paymentType\": \"COD\",\n\t\t\t\"shippingType\": \"PREMIUM\",\n\t\t\t\"grossTotal\": 12800,\n\t\t\t\"currUnit\": \"THB\",\n\t\t\t\"orderItems\": [{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"NIK64254110000000M\",\n\t\t\t\t\t\"qty\": 2,\n\t\t\t\t\t\"subTotal\": 12000,\n\t\t\t\t\t\"ItemType\": \"TV\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"ADIM6710300000M\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 3000,\n\t\t\t\t\t\"ItemType\": \"CD\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"BRO120137440000008\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 4000,\n\t\t\t\t\t\"ItemType\": \"DVD\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Discount\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": -200,\n\t\t\t\t\t\"ItemType\": \"Blu-Ray\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"partnerId\": \"planetsports\",\n\t\t\t\t\t\"itemId\": \"Shipping Charges\",\n\t\t\t\t\t\"qty\": 1,\n\t\t\t\t\t\"subTotal\": 20,\n\t\t\t\t\t\"ItemType\": \"DVD\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t]\n}"
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "sale_order" : {
+        "type" : "object",
+        "properties" : {
+          "orderCreatedTime" : {
+            "type" : "string"
+          },
+          "customerInfo" : {
+            "type" : "object",
+            "properties" : {
+              "addressee" : {
+                "type" : "string"
+              },
+              "address1" : {
+                "type" : "string"
+              },
+              "province" : {
+                "type" : "string"
+              },
+              "postalCode" : {
+                "type" : "string"
+              },
+              "country" : {
+                "type" : "string"
+              },
+              "phone" : {
+                "type" : "string"
+              },
+              "email" : {
+                "type" : "string"
+              }
+            }
+          },
+          "orderShipmentInfo" : {
+            "type" : "object",
+            "properties" : {
+              "addressee" : {
+                "type" : "string"
+              },
+              "address1" : {
+                "type" : "string"
+              },
+              "address2" : {
+                "type" : "string"
+              },
+              "subDistrict" : {
+                "type" : "string"
+              },
+              "district" : {
+                "type" : "string"
+              },
+              "city" : {
+                "type" : "string"
+              },
+              "province" : {
+                "type" : "string"
+              },
+              "postalCode" : {
+                "type" : "string"
+              },
+              "country" : {
+                "type" : "string"
+              },
+              "phone" : {
+                "type" : "string"
+              },
+              "email" : {
+                "type" : "string"
+              }
+            }
+          },
+          "paymentType" : {
+            "type" : "string"
+          },
+          "shippingType" : {
+            "type" : "string"
+          },
+          "grossTotal" : {
+            "type" : "number"
+          },
+          "currUnit" : {
+            "type" : "string"
+          },
+          "orderItems" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "partnerId" : {
+                  "type" : "string"
+                },
+                "itemId" : {
+                  "type" : "string"
+                },
+                "qty" : {
+                  "type" : "number"
+                },
+                "subTotal" : {
+                  "type" : "number"
+                }
+              }
+            }
+          }
+        },
+        "example" : "{\r\n    \"orderCreatedTime\": \"2015-06-18T10:30:40Z\",\r\n    \"customerInfo\": {\r\n        \"addressee\":\"Dan Happiness\",\r\n        \"address1\":\"964 Rama 4 Road\",\r\n        \"province\":\"Bangkok\",\r\n        \"postalCode\":\"10500\",\r\n        \"country\":\"Thailand\",\r\n        \"phone\": \"081-000-0000\",\r\n        \"email\":\"\"\r\n    },\r\n    \"orderShipmentInfo\": {\r\n        \"addressee\":\"Smith Happiness\",\r\n        \"address1\":\"111 Rama 4 rd.\",\r\n        \"address2\":\"\",\r\n        \"subDistrict\":\"Silom\",\r\n        \"district\":\"Bangrak\",\r\n        \"city\":\"\",\r\n        \"province\":\"Bangkok\",\r\n        \"postalCode\":\"10500\",\r\n        \"country\":\"Thailand\",\r\n        \"phone\":\"081-111-2222\",\r\n        \"email\":\"smith@a.com\"\r\n    },\r\n    \"paymentType\": \"COD\",\r\n    \"shippingType\": \"STANDARD_2_4_DAYS\",\r\n    \"grossTotal\": 12800,\r\n    \"currUnit\": \"THB\",\r\n    \"orderItems\": [\r\n        {\r\n            \"partnerId\": \"planetsports\",\r\n            \"itemId\": \"NIK64254110000000M\",\r\n            \"qty\": 2,\r\n            \"subTotal\": 6000\r\n        },\r\n        {\r\n            \"partnerId\": \"planetsports\",\r\n            \"itemId\": \"ADIM6710300000M\",\r\n            \"qty\": 1,\r\n            \"subTotal\": 3000\r\n        },\r\n        {\r\n            \"partnerId\": \"planetsports\",\r\n            \"itemId\": \"BRO120137440000008\",\r\n            \"qty\": 1,\r\n            \"subTotal\": 4000\r\n        },\r\n        {\r\n            \"partnerId\": \"planetsports\",\r\n            \"itemId\": \"Discount\",\r\n            \"qty\": 1,\r\n            \"subTotal\": -200\r\n        },\r\n        {\r\n            \"partnerId\": \"planetsports\",\r\n            \"itemId\": \"Shipping Charges\",\r\n            \"qty\": 1,\r\n            \"subTotal\": 20\r\n        }\r\n    ]\r\n}"
+      }
+    }
+  }
+}
